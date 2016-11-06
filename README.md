@@ -42,7 +42,7 @@ management, etc.) this is the time to mention it.
 
 ### Setup Requirements
 
-This module requires pluginsync enabled 
+This module requires pluginsync enabled
 
 ### Beginning with mcafee
 
@@ -75,7 +75,32 @@ have some test to check both presence and absence of any feature
 
 ### TODO
 
-TODO list
+* workaround faulty systemd integration:
+```
+[root@systemadmin agent]# systemctl status ma
+● ma.service - LSB: McAfee Agent
+   Loaded: loaded (/etc/rc.d/init.d/ma)
+   Active: failed (Result: exit-code) since Sat 2016-11-05 17:22:36 GMT; 26min ago
+     Docs: man:systemd-sysv-generator(8)
+  Process: 19125 ExecStart=/etc/rc.d/init.d/ma start (code=exited, status=1/FAILURE)
+
+Nov 05 17:22:30 systemadmin systemd[1]: Starting LSB: McAfee Agent...
+Nov 05 17:22:30 systemadmin su[19134]: (to mfe) root on none
+Nov 05 17:22:30 systemadmin ma[19125]: [53B blob data]
+Nov 05 17:22:32 systemadmin ma[19125]: [52B blob data]
+Nov 05 17:22:36 systemadmin ma[19125]: [55B blob data]
+Nov 05 17:22:36 systemadmin systemd[1]: ma.service: control process exited, code=exited status=1
+Nov 05 17:22:36 systemadmin systemd[1]: Failed to start LSB: McAfee Agent.
+Nov 05 17:22:36 systemadmin systemd[1]: Unit ma.service entered failed state.
+Nov 05 17:22:36 systemadmin systemd[1]: ma.service failed.
+[root@systemadmin agent]# /etc/init.d/ma status
+
+McAfee agent service is already running.
+McAfee common services is already running.
+McAfee compat service is already running.
+
+```
+
 
 ### Contributing
 

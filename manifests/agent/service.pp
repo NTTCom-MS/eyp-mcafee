@@ -15,6 +15,17 @@ class mcafee::agent::service inherits mcafee::agent {
   {
     if($mcafee::agent::manage_service)
     {
+      if($systemdwrapper)
+      {
+        include systemd
+
+        systemd::sysvwrapper { 'ma':
+          initscript => '/etc/init.d/ma',
+          notify     => Service['ma'],
+          before     => Service['ma'],
+        }
+      }
+
       service { 'ma':
         ensure => $mcafee::agent::service_ensure,
         enable => $mcafee::agent::service_enable,

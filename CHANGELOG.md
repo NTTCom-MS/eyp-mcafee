@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.3
+
+* sysv wrapper for ma init script
+
 ## 0.1.2
 
 * minor bugfix

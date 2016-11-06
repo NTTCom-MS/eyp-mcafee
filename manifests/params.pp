@@ -6,8 +6,13 @@ class mcafee::params {
     {
       case $::operatingsystemrelease
       {
-        /^[5-7].*$/:
+        /^[56].*$/:
         {
+          $systemdwrapper=false
+        }
+        /^7.*$/:
+        {
+          $systemdwrapper=true
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
@@ -22,6 +27,11 @@ class mcafee::params {
           {
             /^14.*$/:
             {
+              $systemdwrapper=false
+            }
+            /^16.*$/:
+            {
+              $systemdwrapper=true
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
