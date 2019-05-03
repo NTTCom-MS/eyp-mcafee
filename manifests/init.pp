@@ -1,7 +1,3 @@
-# == Class: mcafee
-#
-# === mcafee documentation
-#
 class mcafee(
                             $manage_package        = true,
                             $package_ensure        = 'installed',

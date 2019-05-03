@@ -1,4 +1,4 @@
-class mcafee::agent (
+class mcafee::ensltp (
                       $package_source        = undef,
                       $srcdir                = '/usr/local/src',
                       $manage_package        = true,
@@ -9,9 +9,9 @@ class mcafee::agent (
                       $service_enable        = true,
                     ) inherits mcafee::params{
 
-  class { 'mcafee::agent::install': } ->
-  class { 'mcafee::agent::config': } ~>
-  class { 'mcafee::agent::service': } ->
-  Class['mcafee::agent']
+  class { 'mcafee::ensltp::install': } ->
+  class { 'mcafee::ensltp::config': } ~>
+  class { 'mcafee::ensltp::service': } ->
+  Class['mcafee::ensltp']
 
 }
